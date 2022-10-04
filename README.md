@@ -1,2 +1,4 @@
-# instagram_clone
-make instagram_clone with django
+# 인스타그램 클론 코딩
+
+장고, 파이썬을 사용하여 인스타그램 웹버전을 클론 코딩 합니다.
+로그인 기능의 경우 인스타그램과 다르게 깃허브와 카카오톡을 사용합니다.
