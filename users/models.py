@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class UserManager(BaseUserManager):    
@@ -21,6 +21,8 @@ class UserManager(BaseUserManager):
             superuser = self.create_user(
                 username=username,
                 password=password,
+                email="admin@admin.com",
+                full_name="manager",
                 **extra_fields
             )
             superuser.is_admin = True
@@ -33,7 +35,7 @@ class UserManager(BaseUserManager):
             print(e)
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     
     """Custom User model definition"""
     
