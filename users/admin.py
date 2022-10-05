@@ -4,4 +4,5 @@ from . import models
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
-    pass
+    
+    list_display = ("username", "full_name", "email",)
