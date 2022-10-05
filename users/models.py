@@ -2,18 +2,18 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
-class UserManager(BaseUserManager):    
+class UserManager(BaseUserManager):
     
     def create_user(self, email, full_name, username, password, **extra_fields):
         try:
             user = self.model(email=email, full_name=full_name, username=username,)
             extra_fields.setdefault('is_staff', False)
-            extra_fields.setdefault('is_superuser', False)  
+            extra_fields.setdefault('is_superuser', False)
             user.set_password(password)
-            user.is_active = True            
-            user.save()            
-            return user   
-        except Exception as e:            
+            user.is_active = True
+            user.save()
+            return user
+        except Exception as e:
             print(e)
             
     def create_superuser(self, username, password, **extra_fields):
@@ -42,7 +42,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     LOGIN_GITGUB = "github"
     LOGIN_KAKAO = "kakao"
     LOGIN_EMAIL = "email"
-    
     LOGIN_CHOICES = (
         (LOGIN_GITGUB, "Github"),
         (LOGIN_KAKAO, "Kakao"),
@@ -51,7 +50,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     LANGUAGE_ENGLISH = "en"
     LANGUAGE_KOREAN = "kr"
-    
     LANGUAGE_CHOICES = (
         (LANGUAGE_ENGLISH, "English"),
         (LANGUAGE_KOREAN, "Korean"),
@@ -60,7 +58,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     GENDER_MALE = "male"
     GENDER_FEMALE = "female"
     GENDER_OTHER = "other"
-    
     GENDER_CHOICES = (
         (GENDER_MALE, "Male"),
         (GENDER_FEMALE, "Female"),
@@ -76,15 +73,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True)
     language = models.CharField(max_length=2, default=LANGUAGE_ENGLISH)
     login_method = models.CharField(max_length=6, default=LOGIN_EMAIL)
-    
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
+    avatar = models.ImageField(null=True, blank=True)
     
     USERNAME_FIELD = "username"
     
     objects = UserManager()
-    
-
-
