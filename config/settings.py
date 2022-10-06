@@ -41,6 +41,8 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     "users.apps.UsersConfig",
+    "posts.apps.PostsConfig",
+    "core.apps.CoreConfig",
 ]
 
 THIRD_PARTY_APPS = [
