@@ -8,3 +8,6 @@ class PostAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(models.Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    pass
