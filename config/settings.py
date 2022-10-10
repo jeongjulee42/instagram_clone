@@ -43,6 +43,10 @@ PROJECT_APPS = [
     "users.apps.UsersConfig",
     "posts.apps.PostsConfig",
     "core.apps.CoreConfig",
+    "conversations.apps.ConversationsConfig",
+    "follows.apps.FollowsConfig",
+    "likes.apps.LikesConfig",
+    "stories.apps.StoriesConfig",
 ]
 
 THIRD_PARTY_APPS = [
