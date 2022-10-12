@@ -7,7 +7,7 @@ class Follow(core_models.TimeStampedModel):
     """Follow models definition"""
     
     host = models.ForeignKey("users.User", related_name="follows", on_delete=models.CASCADE)
-    followPerson = models.ManyToManyField("users.User", related_name="followsPerson", blank=True)
+    follow = models.ManyToManyField("users.User", related_name="followList", blank=True)
     
     
 class Follower(core_models.TimeStampedModel):
@@ -15,4 +15,4 @@ class Follower(core_models.TimeStampedModel):
     """Follow models definition"""
     
     host = models.ForeignKey("users.User", related_name="followers", on_delete=models.CASCADE)
-    followerPerson = models.ManyToManyField("users.User", related_name="followerPerson", blank=True)
+    follower = models.ManyToManyField("users.User", related_name="followerList", blank=True)
