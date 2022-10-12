@@ -12,11 +12,14 @@ class Post(core_models.TimeStampedModel):
     country = CountryField(null=True, blank=True)
     city = models.CharField(max_length=80, null=True, blank=True)
     is_private = models.BooleanField(default=False)
+    tags = models.ManyToManyField("users.User", related_name="tags", blank=True)
     
     
-class Photo(core_models.TimeStampedModel):
+class PostPhoto(core_models.TimeStampedModel):
     
-    """Photo Model Definition"""
+    """Photo Model in Post Definition"""
     
     file = models.ImageField(null=True)
-    Post = models.ForeignKey("Post", related_name="photos", on_delete=models.CASCADE)
+    post = models.ForeignKey("Post", related_name="post_photos", on_delete=models.CASCADE)
+    
+    

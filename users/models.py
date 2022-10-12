@@ -64,20 +64,22 @@ class User(AbstractBaseUser, PermissionsMixin):
         (GENDER_OTHER, "Other"),
     )
     
-    email = models.EmailField(max_length=100, null=False)
+    avatar = models.ImageField(null=True, blank=True)
     full_name = models.CharField(max_length=30, null=False)
     username = models.CharField(max_length=20, unique=True, null=False)
     web_site_url = models.URLField(max_length=150, null=True, blank=True)
     intro = models.TextField(null=True, blank=True)
+    email = models.EmailField(max_length=100, null=False)
     phone_number = models.CharField(max_length=11, null=True, blank=True, unique=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True)
     language = models.CharField(max_length=2, default=LANGUAGE_ENGLISH)
     login_method = models.CharField(max_length=6, default=LOGIN_EMAIL)
+    is_secret_account = models.BooleanField(default=False)
+    
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-    avatar = models.ImageField(null=True, blank=True)
     
     USERNAME_FIELD = "username"
     
