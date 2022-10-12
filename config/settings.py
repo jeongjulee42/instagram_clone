@@ -47,6 +47,7 @@ PROJECT_APPS = [
     "follows.apps.FollowsConfig",
     "likes.apps.LikesConfig",
     "stories.apps.StoriesConfig",
+    "recommends.apps.RecommendsConfig",
 ]
 
 THIRD_PARTY_APPS = [
