@@ -8,5 +8,5 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.PostPhoto)
-class PhotoAdmin(admin.ModelAdmin):
+class PostPhotoAdmin(admin.ModelAdmin):
     pass
